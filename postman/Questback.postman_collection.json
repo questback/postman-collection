@@ -1,0 +1,620 @@
+{
+	"info": {
+		"_postman_id": "971c7a41-b7aa-4336-8e2c-0b7bc623e20c",
+		"name": "Questback Integration API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21549726"
+	},
+	"item": [
+		{
+			"name": "TestConnection",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/TestConnection",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:TestConnection>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n            </ns:userInfo>\r\n        </ns:TestConnection>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>"
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetQuests",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetQuests",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetQuests>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:pagingInfo>\r\n                <ns:PageNo>0</ns:PageNo>\r\n                <ns:PageSize>10</ns:PageSize>\r\n            </ns:pagingInfo>\r\n            <ns:questFilter>\r\n                <!--Optional:-->\r\n                <!-- <ns:QuestState></ns:QuestState> -->\r\n                <!-- <ns:StartDate></ns:StartDate> -->\r\n                <!-- <ns:EndDate></ns:EndDate> -->\r\n                <!-- <ns:OwnedOnly>false</ns:OwnedOnly> -->\r\n            </ns:questFilter>\r\n        </ns:GetQuests>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetQuestQuestions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetQuestQuestions",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetQuestQuestions>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n        </ns:GetQuestQuestions>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetResponses",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetResponses",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetResponses>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:pagingInfo>\r\n                <ns:PageNo>0</ns:PageNo>\r\n                <ns:PageSize>10</ns:PageSize>\r\n            </ns:pagingInfo>\r\n            <ns:responseFilter>\r\n                <!--Optional:-->\r\n                <!--<ns:ContactId></ns:ContactId>-->\r\n                <!--<ns:MailAdress></ns:MailAdress>-->\r\n                <!--<ns:FromDate></ns:FromDate>-->\r\n                <!--<ns:ToDate></ns:ToDate>-->\r\n                <!--<ns:LastNDays></ns:LastNDays>-->\r\n                <!--<ns:ResponseId></ns:ResponseId>-->\r\n            </ns:responseFilter>\r\n        </ns:GetResponses>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAnswers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetAnswers",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetAnswers>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:questionid>*REPLACE*</ns:questionid>\r\n            <ns:pagingInfo>\r\n                <ns:PageNo>0</ns:PageNo>\r\n                <ns:PageSize>10</ns:PageSize>\r\n            </ns:pagingInfo>\r\n            <ns:responseFilter>\r\n                <!--Optional:-->\r\n                <!--<ns:ContactId>?</ns:ContactId>-->\r\n                <!--<ns:MailAdress>?</ns:MailAdress>-->\r\n                <!--<ns:FromDate>?</ns:FromDate>-->\r\n                <!--<ns:ToDate>?</ns:ToDate>-->\r\n                <!--<ns:LastNDays>?</ns:LastNDays>-->\r\n                <!--<ns:ResponseId>?</ns:ResponseId>-->\r\n            </ns:responseFilter>\r\n        </ns:GetAnswers>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInviteesInfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetInviteesInfo",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetInviteesInfo>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:pagingInfo>\r\n                <ns:PageNo>0</ns:PageNo>\r\n                <ns:PageSize>10</ns:PageSize>\r\n            </ns:pagingInfo>\r\n            <ns:inviteeFilter>\r\n                <!--Optional:-->\r\n                <!--<ns:ContactId></ns:ContactId>-->\r\n                <!--<ns:MailAddress></ns:MailAddress>-->\r\n                <!--<ns:InvitationSent></ns:InvitationSent>-->\r\n                <!--<ns:HasReplied></ns:HasReplied>-->\r\n                <!--<ns:OptedOut></ns:OptedOut>-->\r\n                <!--<ns:GreaterThanInvitationId></ns:GreaterThanInvitationId>-->\r\n            </ns:inviteeFilter>\r\n        </ns:GetInviteesInfo>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetInvitationResponseCounts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetInvitationResponseCounts",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetInvitationResponseCounts>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n        </ns:GetInvitationResponseCounts>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRespondentsData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetRespondentsData",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetRespondentsData>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:delimiter>¤</ns:delimiter>\r\n            <ns:pagingInfo>\r\n                <ns:PageNo>0</ns:PageNo>\r\n                <ns:PageSize>10</ns:PageSize>\r\n            </ns:pagingInfo>\r\n            <ns:respondentsDataFilter>\r\n                <!--Optional:-->\r\n                <!--<ns:GreaterThanInvitationId>0</ns:GreaterThanInvitationId>-->\r\n            </ns:respondentsDataFilter>\r\n        </ns:GetRespondentsData>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLanguageList",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetLanguageList",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetLanguageList>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n        </ns:GetLanguageList>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetReportExport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/GetReportExport",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:GetReportExport>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:responseFilter>\r\n                <!--Optional:-->\r\n                <!--<ns:ContactId>?</ns:ContactId>-->\r\n                <!--<ns:MailAdress>?</ns:MailAdress>-->\r\n                <!--<ns:FromDate>?</ns:FromDate>-->\r\n                <!--<ns:ToDate>?</ns:ToDate>-->\r\n                <!--<ns:LastNDays>?</ns:LastNDays>-->\r\n                <!--<ns:ResponseId>?</ns:ResponseId>-->\r\n            </ns:responseFilter>\r\n            <ns:reportExportSettings>\r\n                <ns:ExportType>CSV</ns:ExportType>\r\n                <ns:RawDataValue>Text</ns:RawDataValue>\r\n                <ns:SplitMultiSelectAnswer>true</ns:SplitMultiSelectAnswer>\r\n                <ns:IncludeEmailOrPhone>true</ns:IncludeEmailOrPhone>\r\n                <ns:CsvFieldSeparator>¤</ns:CsvFieldSeparator>\r\n                <ns:DisplayOtherFreeText>true</ns:DisplayOtherFreeText>\r\n            </ns:reportExportSettings>\r\n        </ns:GetReportExport>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddEmailInvitees",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/AddEmailInvitees",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:AddEmailInvitees>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:emails>\r\n                <!--Zero or more repetitions:-->\r\n                <arr:string>foo.bar@domain.com</arr:string>\r\n            </ns:emails>\r\n            <ns:sendduplicate>true</ns:sendduplicate>\r\n            <ns:languageId>0</ns:languageId>\r\n        </ns:AddEmailInvitees>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRespondentsData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/AddRespondentsData",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:AddRespondentsData>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:respondentsData>\r\n                <ns:RespondentDataHeader>\r\n                    <!--Zero or more repetitions:-->\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Epost</ns:Title>\r\n                        <ns:Type>Text</ns:Type>\r\n                        <ns:IsEmailField>true</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Age</ns:Title>\r\n                        <ns:Type>Numeric</ns:Type>\r\n                        <ns:IsEmailField>false</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Name</ns:Title>\r\n                        <ns:Type>Text</ns:Type>\r\n                        <ns:IsEmailField>false</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                </ns:RespondentDataHeader>\r\n                <ns:RespondentData>\r\n                    <arr:string>JohnDoe@questback.com;John doe;34</arr:string>\r\n                </ns:RespondentData>\r\n                <ns:Delimiter>;</ns:Delimiter>\r\n                <ns:AllowDuplicate>true</ns:AllowDuplicate>\r\n                <ns:AddAsInvitee>true</ns:AddAsInvitee>\r\n                <ns:DistributionPrioritization>email</ns:DistributionPrioritization>\r\n            </ns:respondentsData>\r\n            <ns:languageId>0</ns:languageId>\r\n        </ns:AddRespondentsData>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRespondentsDataWithoutEmailInvitation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "SOAPAction",
+						"value": "https://integration.questback.com/2011/03/QuestBackIntegrationLibrary/AddRespondentsDataWithoutEmailInvitation",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ns=\"https://integration.questback.com/2011/03\" xmlns:arr=\"http://schemas.microsoft.com/2003/10/Serialization/Arrays\">\r\n    <soapenv:Header/>\r\n    <soapenv:Body>\r\n        <ns:AddRespondentsDataWithoutEmailInvitation>\r\n            <ns:userInfo>\r\n                <ns:Username>{{username}}</ns:Username>\r\n                <ns:Password>{{password}}</ns:Password>\r\n                <ns:TimeZone>{{timezone}}</ns:TimeZone>\r\n            </ns:userInfo>\r\n            <ns:questInfo>\r\n                <ns:QuestId>{{questId}}</ns:QuestId>\r\n                <ns:SecurityLock>{{securityLock}}</ns:SecurityLock>\r\n            </ns:questInfo>\r\n            <ns:respondentsData>\r\n                <ns:RespondentDataHeader>\r\n                    <!--Zero or more repetitions:-->\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Epost</ns:Title>\r\n                        <ns:Type>Text</ns:Type>\r\n                        <ns:IsEmailField>true</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Age</ns:Title>\r\n                        <ns:Type>Numeric</ns:Type>\r\n                        <ns:IsEmailField>false</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                    <ns:RespondentDataHeader>\r\n                        <ns:Title>Name</ns:Title>\r\n                        <ns:Type>Text</ns:Type>\r\n                        <ns:IsEmailField>false</ns:IsEmailField>\r\n                        <ns:IsSmsField>false</ns:IsSmsField>\r\n                    </ns:RespondentDataHeader>\r\n                </ns:RespondentDataHeader>\r\n                <ns:RespondentData>\r\n                    <!--Zero or more repetitions:-->\r\n                    <arr:string>JohnBoe@questback.com;John Poe;44</arr:string>\r\n                </ns:RespondentData>\r\n                <ns:Delimiter>;</ns:Delimiter>\r\n                <ns:AllowDuplicate>true</ns:AllowDuplicate>\r\n                <ns:AddAsInvitee>true</ns:AddAsInvitee>\r\n                <ns:DistributionPrioritization>email</ns:DistributionPrioritization>\r\n            </ns:respondentsData>\r\n            <ns:languageId>0</ns:languageId>\r\n        </ns:AddRespondentsDataWithoutEmailInvitation>\r\n    </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://integration.questback.com/Integration.svc",
+					"protocol": "https",
+					"host": [
+						"integration",
+						"questback",
+						"com"
+					],
+					"path": [
+						"Integration.svc"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "username",
+			"value": "username",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "password",
+			"type": "string"
+		},
+		{
+			"key": "timezone",
+			"value": "Europe/Oslo",
+			"type": "string"
+		},
+		{
+			"key": "questId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "securityLock",
+			"value": "securityLock",
+			"type": "string"
+		}
+	]
+}
