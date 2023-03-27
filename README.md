@@ -11,4 +11,4 @@ Download the collection (.json) and import it into Postman.
 
 The collection comes with predefined variables, which you can update and use in all requests.
 
-<img src="https://github.com/questback/public-tools/blob/main/postman/img/postman-variables.png" alt="Postman variables" />
+<img src="https://github.com/questback/postman-collection/blob/main/img/postman-variables.png" alt="Postman variables" />
